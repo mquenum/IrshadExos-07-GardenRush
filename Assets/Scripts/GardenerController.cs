@@ -76,11 +76,13 @@ public class GardenerController : MonoBehaviour
 
     private void ExecuteCommand()
     {
+
         //Si j'ai une commande en cours je fais rien
         if (currentCommand != null && !currentCommand.IsFinished() ) return;
         
         // Si je n'ai pas de commandes à exécuter je fais rien
         if (commands.Count == 0) return;
+
 
         // Sinon
         currentCommand = commands.Dequeue();
