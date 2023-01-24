@@ -8,23 +8,29 @@ public class PlantManager : MonoBehaviour
     [SerializeField] float _maxHeight;
     private float _chrono;
     private float _maxChrono = 15.0f;
-    private bool _disabledChrono = false;
+    private bool hasGrown = false;
     private float growthSpeed = 5.0f;
+
+    private void OnEnable()
+    {
+        _chrono = 0f;
+    }
 
     private void Update()
     {
         _chrono += Time.deltaTime;
 
-        if (_chrono >= _maxChrono && !_disabledChrono)
+        if (_chrono >= _maxChrono && !hasGrown)
         {
             // time out, destroy plant
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(Grow());
+        if (!hasGrown && other.CompareTag("Player"))
+            StartCoroutine(Grow());
     }
 
     private IEnumerator Grow()
@@ -32,7 +38,7 @@ public class PlantManager : MonoBehaviour
         while (transform.localScale.y < _maxHeight)
         {
             transform.localScale += new Vector3(0, growthSpeed * Time.deltaTime, 0);
-            _disabledChrono = true;
+            hasGrown = true;
             yield return null;
         }
     }
