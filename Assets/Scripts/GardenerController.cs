@@ -29,6 +29,12 @@ public class GardenerController : MonoBehaviour
     // stores the position in a pool
     private void PositionPool()
     {
+        /* TODO
+         * Use raycast instead of getting position relative to gameobject
+         * "out hit" in raycast indicates that there will be a return other than te main return
+         * usable in any custom function
+         * see: https://www.kevingermain.com/fr/blog/2015/02/05/bien-comprendre-les-mots-cles-ref-et-out-en-c/
+         * */
         // we get position
         Vector3 transformInCameraSpace = _camera.transform.InverseTransformPoint(transform.position);
         Vector3 screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transformInCameraSpace.z);
