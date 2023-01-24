@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 900562773}
   - component: {fileID: 900562772}
   - component: {fileID: 900562771}
+  - component: {fileID: 900562776}
   m_Layer: 0
   m_Name: Gardener
   m_TagString: Untagged
@@ -330,13 +331,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900562770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.52, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900562776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900562770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fcb925a84f0564f8ac03973cd5658b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _getScreenPosition: {fileID: 1493508514275151001, guid: 388d2837de5e3ad49b60b4ea36ea0149, type: 3}
+  _camera: {fileID: 963194227}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +450,7 @@ GameObject:
   - component: {fileID: 1394402432}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
