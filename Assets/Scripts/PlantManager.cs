@@ -9,6 +9,7 @@ public class PlantManager : MonoBehaviour
     private float _chrono;
     private float _maxChrono = 15.0f;
     private bool _disabledChrono = false;
+    private float growthSpeed = 5.0f;
 
     private void Update()
     {
@@ -23,27 +24,16 @@ public class PlantManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Grow(_growingAmount);
+        StartCoroutine(Grow());
     }
 
-    private void Grow(float grow)
+    private IEnumerator Grow()
     {
-        Transform obj = transform;
-        float yGrow = (obj.localScale.y + grow) - obj.localScale.y;
-        Vector3 scaleChange = new Vector3(1.0f, yGrow, 1.0f);
-        float nextHeight = scaleChange.y + obj.localScale.y;
-
-        if (nextHeight <= _maxHeight)
+        while (transform.localScale.y < _maxHeight)
         {
-            // grow plant
-            obj.localScale += scaleChange;
-            // reset _chrono
-            _chrono = 0;
-        }
-        else
-        {
-            // disable chrono to prevent grown plants destruction
+            transform.localScale += new Vector3(0, growthSpeed * Time.deltaTime, 0);
             _disabledChrono = true;
+            yield return null;
         }
     }
 }
